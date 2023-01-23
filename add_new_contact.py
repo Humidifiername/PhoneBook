@@ -1,13 +1,10 @@
-import csv
 import create_book as cb
 
-name = input('Введите имя контакта: ')
-phone = int(input('Введите номер контакта: '))
+name = input("Введите имя контакта: ")
+phone = input("Введите телефон: ")
 
-def add_contact(name, phone):
-    with open(cb.FILENAME, "a", newline="") as file:
-        contact = [name, phone]
-        writer = csv.writer(file)
-        writer.writerow(contact)
+new_contact = {name : phone}
 
-add_contact(name, phone)
+with open(cb.FILENAME, 'a') as file:
+    for key, value in new_contact.items():
+        file.write(f'{key} - {value}\n')
